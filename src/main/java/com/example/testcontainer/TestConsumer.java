@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TestConsumer implements Runnable {
+	
 
     private Consumer<Long, String> consumer;
     private Long pollDuration;
