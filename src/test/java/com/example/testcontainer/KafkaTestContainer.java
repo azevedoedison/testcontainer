@@ -25,7 +25,7 @@ import static org.testcontainers.shaded.org.awaitility.Awaitility.await;
 
 @SpringBootTest
 @Testcontainers
-class TestcontainerApplicationTests {
+class KafkaTestContainer {
 
 	@Container
     public static KafkaContainer kafka = new KafkaContainer(DockerImageName.parse("confluentinc/cp-kafka:latest"));
@@ -40,7 +40,7 @@ class TestcontainerApplicationTests {
         //starting consumer
         Thread thread = new Thread(consumer);
         thread.start();
-        await().atMost(10, SECONDS).until(() -> consumer.getMessageHistory().size() > 0);
+        await().atMost(5, SECONDS).until(() -> consumer.getMessageHistory().size() > 0);
         assertEquals(1, consumer.getMessageHistory().size());
 
     }

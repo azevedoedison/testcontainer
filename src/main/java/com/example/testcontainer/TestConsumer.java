@@ -25,7 +25,7 @@ public class TestConsumer implements Runnable {
     @Override
     public void run() {
         while (!closed) {
-            ConsumerRecords<Long, String> records = consumer.poll(Duration.ofMillis(pollDuration));
+            ConsumerRecords<Long, String> records = consumer.poll(Duration.ofMillis(pollDuration));           
             records.forEach(rec -> {
                 messagesHistory.add(rec.value());
             });
