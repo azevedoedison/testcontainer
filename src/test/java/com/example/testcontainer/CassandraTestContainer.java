@@ -8,8 +8,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.testcontainers.containers.CassandraContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
-import org.testcontainers.utility.DockerImageName;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
@@ -20,7 +18,7 @@ class CassandraTestContainer {
 
 	
 	@Container
-    public static final CassandraContainer cassandra = new CassandraContainer(DockerImageName.parse("cassandra:latest"));
+	public static final CassandraContainer<?> cassandra = new CassandraContainer<>("cassandra:latest");
 
 	@BeforeAll
 	static void setupCassandraConnectionProperties() {
